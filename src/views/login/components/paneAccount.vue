@@ -27,8 +27,8 @@ import type { IAccount } from "@/types";
 
 // 1.定义account数据
 const account = reactive<IAccount>({
-  name:  '',
-  password:  ''
+  name:  'coderwhy',
+  password:  '123456'
 })
 
 // 2.定义校验规则
