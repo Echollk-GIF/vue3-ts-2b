@@ -11,7 +11,8 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "noImplicitAny": false
   },
   "references": [
     {
