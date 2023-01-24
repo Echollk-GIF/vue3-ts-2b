@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
+    "pinia": "^2.0.29",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
