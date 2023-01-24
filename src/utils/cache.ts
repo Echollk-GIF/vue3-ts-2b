@@ -1,17 +1,19 @@
 enum CacheType {
-  local = "local",
-  session = "session"
+  Local,
+  Session
 }
 
-class MYCache {
+class Cache {
   storage: Storage;
 
   constructor(type: CacheType) {
-    this.storage = type === CacheType.local ? localStorage : sessionStorage;
+    this.storage = type === CacheType.Local ? localStorage : sessionStorage;
   }
 
   setCache(key: string, value: any) {
-    this.storage.setItem(key, JSON.stringify(value));
+    if (value) {
+      this.storage.setItem(key, JSON.stringify(value));
+    }
   }
 
   getCache(key: string) {
@@ -21,16 +23,16 @@ class MYCache {
     }
   }
 
-  deleteCache(key: string) {
+  removeCache(key: string) {
     this.storage.removeItem(key);
   }
 
-  clearCache() {
+  clear() {
     this.storage.clear();
   }
 }
 
-const localCache = new MYCache(CacheType.local);
-const sessionCache = new MYCache(CacheType.session);
+const localCache = new Cache(CacheType.Local);
+const sessionCache = new Cache(CacheType.Session);
 
 export { localCache, sessionCache };

@@ -1,15 +1,17 @@
 <template>
   <div>main</div>
-  {{ counterStore.counter }}--{{ counterStore.doubleCounter }}
-  <button @click="changeCounter">修改counter</button>
+  <button @click="handleExitClick">退出登录</button>
 </template>
 
 <script setup lang="ts">
-import useCounterStore from "@/store/counter";
-const counterStore = useCounterStore();
+import { localCache } from '@/utils/cache';
+import { useRouter } from 'vue-router';
+import { LOGIN_TOKEN } from '../../global/constants';
 
-function changeCounter() {
-  counterStore.changeCounterAction(300);
+const router = useRouter()
+function handleExitClick() {
+  localCache.removeCache(LOGIN_TOKEN)
+  router.push('/login')
 }
 </script>
 
