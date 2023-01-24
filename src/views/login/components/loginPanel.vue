@@ -25,7 +25,7 @@
       </el-tab-pane>
     </el-tabs>
     <div class="control-account">
-      <el-checkbox v-model="isRemPwd" label="记住密码" />
+      <el-checkbox v-model="isRemPwd" label="记住我" />
       <el-link type="primary">忘记密码</el-link>
     </div>
     <el-button

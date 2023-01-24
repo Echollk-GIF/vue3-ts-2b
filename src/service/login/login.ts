@@ -6,3 +6,12 @@ export function accountLoginRequest(account: IAccount) {
     data: account
   });
 }
+
+export function getUserInfoById(id: number) {
+  return myRequest.get({
+    url: `/users/${id}`
+    // headers: {
+    //   Authorization: 'Bearer ' + localCache.getCache(LOGIN_TOKEN)
+    // }
+  });
+}
