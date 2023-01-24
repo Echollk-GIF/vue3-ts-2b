@@ -1,5 +1,6 @@
 import myRequest from "..";
-export function accountLoginRequest(account: any) {
+import type { IAccount } from "@/types";
+export function accountLoginRequest(account: IAccount) {
   return myRequest.post({
     url: "/login",
     data: account
