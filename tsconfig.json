@@ -3,7 +3,9 @@
   "include": [
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "components.d.ts",
+    "auto-imports.d.ts",
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -12,7 +14,10 @@
         "./src/*"
       ]
     },
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    // "types": [
+    //   "element-plus/global"
+    // ]
   },
   "references": [
     {
