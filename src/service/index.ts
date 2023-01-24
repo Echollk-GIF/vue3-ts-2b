@@ -1,9 +1,9 @@
 import { BASE_URL, TIME_OUT } from "./config";
-import HYRequest from "./request";
+import MYRequest from "./request";
 
-const hyRequest = new HYRequest({
+const myRequest = new MYRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT
 });
 
-export default hyRequest;
+export default myRequest;

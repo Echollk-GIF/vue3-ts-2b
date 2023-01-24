@@ -2,7 +2,7 @@ import axios from "axios";
 import type { AxiosInstance } from "axios";
 import type { HYRequestConfig } from "./type";
 
-class HYRequest {
+class MYRequest {
   instance: AxiosInstance;
 
   // request实例 => axios的实例
@@ -78,4 +78,4 @@ class HYRequest {
   }
 }
 
-export default HYRequest;
+export default MYRequest;
