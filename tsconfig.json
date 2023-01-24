@@ -12,7 +12,7 @@
         "./src/*"
       ]
     },
-    "noImplicitAny": true
+    "noImplicitAny": false
   },
   "references": [
     {
