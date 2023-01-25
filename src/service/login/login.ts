@@ -15,3 +15,9 @@ export function getUserInfoById(id: number) {
     // }
   });
 }
+
+export function getUserMenusByRoleId(id: number) {
+  return myRequest.get({
+    url: `/role/${id}/menu`
+  });
+}
