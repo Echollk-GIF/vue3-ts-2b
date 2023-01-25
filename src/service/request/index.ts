@@ -1,42 +1,54 @@
-import axios from "axios";
-import type { AxiosInstance } from "axios";
-import type { HYRequestConfig } from "./type";
+import axios from 'axios'
+import type { AxiosInstance } from 'axios'
+import type { HYRequestConfig } from './type'
 
-class MYRequest {
-  instance: AxiosInstance;
+// 拦截器: 蒙版Loading/token/修改配置
+
+/**
+ * 两个难点:
+ *  1.拦截器进行精细控制
+ *    > 全局拦截器
+ *    > 实例拦截器
+ *    > 单次请求拦截器
+ *
+ *  2.响应结果的类型处理(泛型)
+ */
+
+class HYRequest {
+  instance: AxiosInstance
 
   // request实例 => axios的实例
   constructor(config: HYRequestConfig) {
-    this.instance = axios.create(config);
+    this.instance = axios.create(config)
 
     // 每个instance实例都添加拦截器
     this.instance.interceptors.request.use(
       (config) => {
         // loading/token
-        return config;
+        return config
       },
       (err) => {
-        return err;
+        return err
       }
-    );
+    )
     this.instance.interceptors.response.use(
       (res) => {
-        return res.data;
+        return res.data
       },
       (err) => {
-        return err;
+        return err
       }
-    );
+    )
 
     // 针对特定的hyRequest实例添加拦截器
     this.instance.interceptors.request.use(
       config.interceptors?.requestSuccessFn,
       config.interceptors?.requestFailureFn
-    );
+    )
     this.instance.interceptors.response.use(
       config.interceptors?.responseSuccessFn,
       config.interceptors?.responseFailureFn
-    );
+    )
   }
 
   // 封装网络请求的方法
@@ -44,7 +56,7 @@ class MYRequest {
   request<T = any>(config: HYRequestConfig<T>) {
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
-      config = config.interceptors.requestSuccessFn(config);
+      config = config.interceptors.requestSuccessFn(config)
     }
 
     // 返回Promise
@@ -54,28 +66,28 @@ class MYRequest {
         .then((res) => {
           // 单词响应的成功拦截处理
           if (config.interceptors?.responseSuccessFn) {
-            res = config.interceptors.responseSuccessFn(res);
+            res = config.interceptors.responseSuccessFn(res)
           }
-          resolve(res);
+          resolve(res)
         })
         .catch((err) => {
-          reject(err);
-        });
-    });
+          reject(err)
+        })
+    })
   }
 
   get<T = any>(config: HYRequestConfig<T>) {
-    return this.request({ ...config, method: "GET" });
+    return this.request({ ...config, method: 'GET' })
   }
   post<T = any>(config: HYRequestConfig<T>) {
-    return this.request({ ...config, method: "POST" });
+    return this.request({ ...config, method: 'POST' })
   }
   delete<T = any>(config: HYRequestConfig<T>) {
-    return this.request({ ...config, method: "DELETE" });
+    return this.request({ ...config, method: 'DELETE' })
   }
   patch<T = any>(config: HYRequestConfig<T>) {
-    return this.request({ ...config, method: "PATCH" });
+    return this.request({ ...config, method: 'PATCH' })
   }
 }
 
-export default MYRequest;
+export default HYRequest

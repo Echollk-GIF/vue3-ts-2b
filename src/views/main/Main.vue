@@ -15,10 +15,11 @@
     </el-container>
   </div>
 </template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
-import mainHeader from './components/mainHeader/mainHeader.vue';
-import mainMenu from './components/mainMenu/mainMenu.vue';
+import MainMenu from '@/components/main-menu/main-menu.vue'
+import MainHeader from '@/components/main-header/main-header.vue'
 
 // 处理main-header中折叠的变化
 const isFold = ref(false)
