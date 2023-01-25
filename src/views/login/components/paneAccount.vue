@@ -30,8 +30,8 @@ const CACHE_NAME = 'name'
 const CACHE_PASSWORD = 'password'
 // 1.定义account数据
 const account = reactive<IAccount>({
-  name: localCache.getCache(CACHE_NAME) ?? '',
-  password: localCache.getCache(CACHE_PASSWORD) ?? ''
+  name: localCache.getCache(CACHE_NAME) ?? 'coderwhy',
+  password: localCache.getCache(CACHE_PASSWORD) ?? '123456'
 })
 
 // 2.定义校验规则
